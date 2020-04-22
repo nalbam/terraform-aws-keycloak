@@ -32,5 +32,6 @@ data "template_file" "setup" {
   vars = {
     DNS_NAME = local.dns_name
     TOKEN    = var.slack_token
+    VERSION  = var.keycloak_version
   }
 }

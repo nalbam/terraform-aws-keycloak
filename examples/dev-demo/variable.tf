@@ -8,20 +8,24 @@ variable "name" {
   default = "dev-demo-keycloak"
 }
 
-variable "vpc_id" {
-  default = "vpc-075279b4e48b983ff"
-}
+# variable "vpc_id" {
+#   default = "vpc-025ad1e9d1cb3c27d"
+# }
 
-variable "subnet_id" {
-  default = "subnet-08a5b599722126606"
-}
+# variable "subnet_id" {
+#   default = "subnet-09a6bcc0e50e97446"
+# }
 
-variable "public_subnet_ids" {
-  default = [
-    "subnet-007a2bd91c7939e85",
-    "subnet-0477597c240b95aa8",
-    "subnet-0c91c5cd95b319b76",
-  ]
+# variable "public_subnet_ids" {
+#   default = [
+#     "subnet-007a2bd91c7939e85",
+#     "subnet-0477597c240b95aa8",
+#     "subnet-0c91c5cd95b319b76",
+#   ]
+# }
+
+variable "keycloak_version" {
+  default = "9.0.3"
 }
 
 variable "allow_ip_address" {
@@ -41,7 +45,7 @@ variable "dns_name" {
 }
 
 variable "dns_root" {
-  default = "nalbam.com"
+  default = "mzdev.be"
 }
 
 variable "slack_token" {

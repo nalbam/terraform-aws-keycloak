@@ -3,6 +3,7 @@ set -e -x
 
 DNS_NAME="${DNS_NAME}"
 TOKEN="${TOKEN}"
+VERSION="${VERSION}"
 
 # update
 yum update -y
@@ -16,8 +17,8 @@ mkdir /data
 pushd /data
 
 # keycloak
-wget https://downloads.jboss.org/keycloak/9.0.3/keycloak-9.0.3.tar.gz
-tar -zxvf keycloak-9.0.3.tar.gz
+wget https://downloads.jboss.org/keycloak/${VERSION}/keycloak-${VERSION}.tar.gz
+tar -zxvf keycloak-${VERSION}.tar.gz
 
 
 # slack

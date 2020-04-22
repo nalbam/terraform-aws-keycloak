@@ -2,9 +2,11 @@
 
 terraform {
   backend "s3" {
-    region = "ap-northeast-2"
-    bucket = "terraform-nalbam-seoul"
-    key    = "keycloak.tfstate"
+    region         = "ap-northeast-2"
+    bucket         = "terraform-mz-demo-seoul"
+    key            = "keycloak.tfstate"
+    dynamodb_table = "terraform-mz-demo-seoul"
+    encrypt        = true
   }
   required_version = ">= 0.12"
 }
@@ -14,16 +16,17 @@ provider "aws" {
 }
 
 module "keycloak" {
-  # source = "github.com/nalbam/terraform-aws-keycloak"
+  # source = "github.com/nalbam/terraform-aws-keycloak?ref=v0.12.1"
   source = "../../"
 
   name = var.name
 
-  vpc_id = var.vpc_id
+  vpc_id    = data.terraform_remote_state.vpc.outputs.vpc_id
+  subnet_id = data.terraform_remote_state.vpc.outputs.private_subnet_ids.0
 
-  subnet_id = var.subnet_id
+  public_subnet_ids = data.terraform_remote_state.vpc.outputs.public_subnet_ids
 
-  public_subnet_ids = var.public_subnet_ids
+  keycloak_version = var.keycloak_version
 
   allow_ip_address = var.allow_ip_address
 
