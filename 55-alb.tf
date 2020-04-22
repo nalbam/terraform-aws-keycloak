@@ -22,7 +22,7 @@ resource "aws_alb_target_group" "this" {
 
   health_check {
     interval            = 10
-    path                = "/login"
+    path                = "/auth/"
     healthy_threshold   = 2
     unhealthy_threshold = 2
   }

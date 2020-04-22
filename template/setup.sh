@@ -3,7 +3,10 @@ set -e -x
 
 DNS_NAME="${DNS_NAME}"
 TOKEN="${TOKEN}"
+
 VERSION="${VERSION}"
+
+PRIVATE_IP="${PRIVATE_IP}"
 
 # update
 yum update -y
@@ -12,14 +15,15 @@ yum update -y
 yum remove -y java-1.7.0-openjdk
 yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel
 
-mkdir /data
-
-pushd /data
+pushd /home/ec2-user
 
 # keycloak
 wget https://downloads.jboss.org/keycloak/${VERSION}/keycloak-${VERSION}.tar.gz
 tar -zxvf keycloak-${VERSION}.tar.gz
 
+./keycloak-${VERSION}/bin/standalone.sh -b ${PRIVATE_IP}
+
+popd
 
 # slack
 if [ "$TOKEN" != "" ]; then

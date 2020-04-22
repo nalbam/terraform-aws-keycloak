@@ -20,6 +20,10 @@ variable "keycloak_version" {
   default = "9.0.3"
 }
 
+variable "allow_ssh_sg" {
+  default = ""
+}
+
 variable "allow_ip_address" {
   type    = list(string)
   default = []

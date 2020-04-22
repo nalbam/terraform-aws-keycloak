@@ -28,11 +28,15 @@ variable "keycloak_version" {
   default = "9.0.3"
 }
 
+variable "allow_ssh_sg" {
+  default = "sg-01c7ee8427eb8358b"
+}
+
 variable "allow_ip_address" {
   type = list(string)
   default = [
     "0.0.0.0/0", # all
-    # "221.148.35.250/32", # echo "$(curl -sL icanhazip.com)/32"
+    # "211.60.50.190/32", # echo "$(curl -sL icanhazip.com)/32"
   ]
 }
 

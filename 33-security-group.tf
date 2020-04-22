@@ -28,6 +28,14 @@ resource "aws_security_group" "this" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  // SSH
+  ingress {
+    from_port       = "22"
+    to_port         = "22"
+    protocol        = "tcp"
+    security_groups = [var.allow_ssh_sg]
+  }
+
   // HTTP
   ingress {
     from_port   = "80"
