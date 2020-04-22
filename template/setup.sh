@@ -6,8 +6,6 @@ TOKEN="${TOKEN}"
 
 VERSION="${VERSION}"
 
-# PRIVATE_IP="${PRIVATE_IP}"
-
 # update
 yum update -y
 
@@ -23,7 +21,7 @@ tar -zxvf keycloak-${VERSION}.tar.gz
 
 # ./keycloak-${VERSION}/bin/add-user-keycloak.sh -r master -u <username> -p <password>
 
-# ./keycloak-${VERSION}/bin/standalone.sh -b ${PRIVATE_IP}
+# ./keycloak-${VERSION}/bin/standalone.sh -b PRIVATE_IP
 
 popd
 
